@@ -26,6 +26,6 @@ root@4527e52ba5f6:/# pwd
 root@4527e52ba5f6:/# cd /opt/kafka/bin
 
 # 토픽 생성
-
+> kafka-topics.sh --create --topic spacex --bootstrap-server 127.0.0.1:9092 --partitions 1 --replication-factor 1
 
 ```
