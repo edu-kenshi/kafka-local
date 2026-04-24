@@ -130,6 +130,16 @@ VISUALIZE    :     OpenSearch (DB)      <---( Indexing & Search )---->  DASHBOAR
     ```
         PS ...> docker exec -it kafka-local bash
 
+        # json 관련 토픽 커슈머
         > ./opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server 127.0.0.1:9092 --topic factory-json-topic --from-beginning
+
+        # text 관련 토픽 커슈머
+        > ./opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server 127.0.0.1:9092 --topic factory-text-topic --from-beginning
     ```
+
+- 로그 발생 -> 카프카 컨슈머 수시 확인
+    ```
+        python log_gen.py
+    ```
+    
 
