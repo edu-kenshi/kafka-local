@@ -97,3 +97,11 @@ VISUALIZE    :     OpenSearch (DB)      <---( Indexing & Search )---->  DASHBOAR
 시각화/분석  :     OpenSearch (DB)      <---( 인덱싱 및 검색 )------>  대시보드 (Kibana)
 ====================================================================================================
 ```
+
+
+# 프로젝트 재구성
+- docker-compose.yml 수정 (KRaft 적용된)
+```
+    docker compose down
+    docker compose up -d
+```
