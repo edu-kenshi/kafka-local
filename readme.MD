@@ -183,3 +183,15 @@ VISUALIZE    :     OpenSearch (DB)      <---( Indexing & Search )---->  DASHBOAR
     }
 }
 ```
+
+# 로그 형태
+- 참고
+    - 최초 데이터 => fluent-bit/logstash => 데이터 형태가 노이즈 많음!!(프토토콜때문에 추가된 내용이 많음) => 필터 역활 필요함
+    - 필터 보정 하는 내용 업데이트 (추후)
+
+# kafka 대시보드
+- kafka ui
+- 메세지의 흐름, connect를 통해 전달이 잘되는지 등등 모니터링 
+
+# 로컬 -> 클라우드 연결
+- kafka connect
