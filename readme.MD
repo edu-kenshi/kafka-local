@@ -118,6 +118,10 @@ VISUALIZE    :     OpenSearch (DB)      <---( Indexing & Search )---->  DASHBOAR
     - Input : 파일, 시스템 매트릭, http 스트림, .. 다양한 소스 제공
     - Service, Parser, Filter, Buffer, Rounting
     - Output : Kafka/Opensearch/Elasticsearch/s3/... 모두 가능함
-- conf 구성 => 규칙 기술
 - 지원 플러그인 
     - 1000여개 <-> 100여개
+
+- conf 구성 => 규칙 기술
+    ```
+    docker compose restart
+    ```
