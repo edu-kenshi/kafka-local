@@ -200,6 +200,25 @@ VISUALIZE    :     OpenSearch (DB)      <---( Indexing & Search )---->  DASHBOAR
     docker compose down
     docker compose up -d
 ```
+- CLI 등록
+```
+    curl -X POST http://localhost:8083/connectors \
+        -H "Content-Type: application/json" \
+        -d '{
+            "name": "kafka-to-firehose-sink",
+            "config": {
+            "connector.class": "io.confluent.connect.aws.firehose.KinesisFirehoseSinkConnector",
+            "tasks.max": "1",
+            "topics": "factory-json-topic,factory-text-topic",
+            "region": "ap-northeast-2",
+            "aws.kinesis.firehose.delivery.stream": "de-ai-30-ap2-kafka",
+            "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+            "value.converter.schemas.enable": "false",
+            "errors.log.enable": "true",
+            "errors.log.include.messages": "true"
+            }
+        }'
+```
 - kafka ui 접속
     - [=] > Kafka connect > Create Connector
     - Name
@@ -218,6 +237,7 @@ VISUALIZE    :     OpenSearch (DB)      <---( Indexing & Search )---->  DASHBOAR
             value.converter: org.apache.kafka.connect.json.JsonConverter
             value.converter.schemas.enable: false
         ```
+        -  Config  입력 > submit
         ```
             {
                 "name": "kafka-to-firehose-sink",
@@ -226,7 +246,7 @@ VISUALIZE    :     OpenSearch (DB)      <---( Indexing & Search )---->  DASHBOAR
                     "tasks.max": "1",
                     "topics": "factory-json-topic,factory-text-topic",
                     "region": "ap-northeast-2",
-                    "aws.kinesis.firehose.delivery.stream": "자신의_파이어호스_스트림_이름",
+                    "aws.kinesis.firehose.delivery.stream": "de-ai-30-ap2-kafka",
                     "value.converter": "org.apache.kafka.connect.json.JsonConverter",
                     "value.converter.schemas.enable": "false",
                     "errors.log.enable": "true",
