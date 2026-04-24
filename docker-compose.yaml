@@ -71,10 +71,10 @@ services:
       CONNECT_VALUE_CONVERTER: org.apache.kafka.connect.json.JsonConverter
       CONNECT_VALUE_CONVERTER_SCHEMAS_ENABLE: "false"
       CONNECT_PLUGIN_PATH: "/usr/share/java,/usr/share/confluent-hub-components"
-      # AWS 인증 정보 (보안을 위해 실제 값으로 교체 필요)
-      AWS_ACCESS_KEY_ID: "YOUR_ACCESS_KEY"
-      AWS_SECRET_ACCESS_KEY: "YOUR_SECRET_KEY"
-      AWS_REGION: "ap-northeast-2"
+      # AWS 인증 정보 (보안을 위해 실제 값으로 교체 필요). .env을 읽어서 자동 세팅해줌
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_KEY}
+      AWS_REGION: ${AWS_REGION}
     command: 
       - /bin/bash
       - -c 
