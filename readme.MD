@@ -195,3 +195,25 @@ VISUALIZE    :     OpenSearch (DB)      <---( Indexing & Search )---->  DASHBOAR
 
 # 로컬 -> 클라우드 연결
 - kafka connect
+- docker-compose.yaml 업데이트
+```
+    docker compose down
+    docker compose up -d
+```
+- kafka ui 접속
+    - [=] > Kafka connect > Create Connector
+    - Name
+        ```
+            de-ai-30-adf-directput-connection
+        ```
+    - config
+        ```
+            name: kafka-to-firehose-sink (커넥터 식별 이름)
+            connector.class: io.confluent.connect.aws.firehose.KinesisFirehoseSinkConnector
+            tasks.max: 1 (데이터량이 많으면 숫자를 늘려 병렬 처리 가능)
+            topics: factory-json-topic,factory-text-topic (구독할 토픽들)
+            region: ap-northeast-2 (AWS 리전)
+            aws.kinesis.firehose.delivery.stream: 자신의_파이어호스_스트림_이름
+            value.converter: org.apache.kafka.connect.json.JsonConverter
+            value.converter.schemas.enable: false
+        ```
