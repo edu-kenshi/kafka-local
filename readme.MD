@@ -207,6 +207,7 @@ VISUALIZE    :     OpenSearch (DB)      <---( Indexing & Search )---->  DASHBOAR
             de-ai-30-adf-directput-connection
         ```
     - config
+        -firehose 관련 내용
         ```
             name: kafka-to-firehose-sink (커넥터 식별 이름)
             connector.class: io.confluent.connect.aws.firehose.KinesisFirehoseSinkConnector
@@ -216,4 +217,20 @@ VISUALIZE    :     OpenSearch (DB)      <---( Indexing & Search )---->  DASHBOAR
             aws.kinesis.firehose.delivery.stream: 자신의_파이어호스_스트림_이름
             value.converter: org.apache.kafka.connect.json.JsonConverter
             value.converter.schemas.enable: false
+        ```
+        ```
+            {
+                "name": "kafka-to-firehose-sink",
+                "config": {
+                    "connector.class": "io.confluent.connect.aws.firehose.KinesisFirehoseSinkConnector",
+                    "tasks.max": "1",
+                    "topics": "factory-json-topic,factory-text-topic",
+                    "region": "ap-northeast-2",
+                    "aws.kinesis.firehose.delivery.stream": "자신의_파이어호스_스트림_이름",
+                    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+                    "value.converter.schemas.enable": "false",
+                    "errors.log.enable": "true",
+                    "errors.log.include.messages": "true"
+                }
+            }
         ```
